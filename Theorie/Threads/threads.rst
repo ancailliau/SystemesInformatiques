@@ -10,7 +10,7 @@ Utilisation de plusieurs threads
 Les performances des microprocesseurs se sont continuellement améliorées depuis les années 1960s. Cette amélioration a été possible grâce aux progrès constants de la microélectronique qui a permis d'assembler des microprocesseurs contenant de plus en plus de transistors sur une surface de  plus en plus réduite. La figure [#ftransistors]_ ci-dessous illustre bien cette évolution puisqu'elle représente le nombre transistors par microprocesseur en fonction du temps.
 
 
-.. figure:: /Threads/figures/534px-Transistor_Count_and_Moore's_Law_-_2011.png
+.. figure:: figures/534px-Transistor_Count_and_Moore's_Law_-_2011.png
    :align: center
 
    Evolution du nombre de transistors par microprocesseur
@@ -20,7 +20,7 @@ Cette évolution avait été prédite par Gordon Moore dans les années 1960s [S
 
 Le fonctionnement d'un microprocesseur est régulé par une horloge. Celle-ci rythme la plupart des opérations du processeur et notamment le chargement des instructions depuis la mémoire. Pendant de nombreuses années, les performances des microprocesseurs ont fortement dépendu de leur vitesse d'horloge. Les premiers microprocesseurs avaient des fréquences d'horloge de quelques centaines de :term:`kHz`. A titre d'exemple, le processeur intel 4004 avait une horloge à 740 kHz en 1971. Aujourd'hui, les processeurs rapides dépassent la fréquence de 3 :term:`GHz`. La figure ci-dessous présente l'évolution de la fréquence d'horloge des microprocesseurs depuis les années 1970s [#fperf]_. On remarque une évolution rapide jusqu'aux environs du milieu de la dernière décennie. La barrière des 10 MHz a été franchie à la fin des années 1970s. Les 100 :term:`MHz` ont étés atteints en 1994 et le Ghz aux environs de l'an 2000.
 
-.. figure:: /Threads/figures/figures-001-c.png
+.. figure:: figures/figures-001-c.png
    :align: center
 
    Evolution de la vitesse d'horloge des microprocesseurs
@@ -34,7 +34,7 @@ Si pendant longtemps la fréquence d'horloge d'un microprocesseur a été une bo
 Une autre façon de mesurer les performances d'un microprocesseur est de comptabiliser le nombre d'instructions qu'il exécute par seconde. On parle en général de Millions d'Instructions par Seconde (ou :term:`MIPS`). Si les premiers microprocesseurs effectuaient moins de 100.000 instructions par seconde, la barrière du MIPS a été franchie en 1979. Mesurées en MIPS, les performances des microprocesseurs ont continué à augmenter durant les dernières années malgré la barrière des 3 GHz comme le montre la figure ci-dessous.
 
 
-.. figure:: /Threads/figures/figures-002-c.png
+.. figure:: figures/figures-002-c.png
    :align: center
 
    Evolution des performances des microprocesseurs en MIPS

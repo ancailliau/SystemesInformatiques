@@ -175,7 +175,7 @@ Le problème des producteurs-consommateurs est un problème extrêmement fréque
 
 Ces deux types de threads communiquent en utilisant un buffer qui a une capacité limitée à `N` slots comme illustré dans la figure ci-dessous.
 
-.. figure:: /Threads/figures/figures-S7-001-c.png
+.. figure:: figures/figures-S7-001-c.png
    :align: center
    :scale: 80
 
@@ -585,7 +585,7 @@ Dans les années 1960s, à l'époque des premières réflexions sur l'utilisatio
 
 Plus les opérations réalisées à l'intérieur d'un programme sont indépendantes entre elles, plus le programme est parallélisable et inversement. Pour Amdahl, si le temps d'exécution d'un programme séquentiel est `T` et qu'une fraction `f` de ce programme est parallélisable, alors le gain qui peut être obtenu de la parallélisation est :math:`\frac{T}{T \times( (1-f)+\frac{f}{N})}=\frac{1}{ (1-f)+\frac{f}{N}}` lorsque le programme est découpé en `N` threads. Cette formule, connue sous le nom de la :term:`loi de Amdahl` fixe une limite théorique sur le gain que l'on peut obtenir en parallélisant un programme. La figure ci-dessous [#famdahl]_ illustre le gain théorique que l'on peut obtenir en parallélisant un programme en fonction du nombre de processeur et pour différentes fractions parallélisables.
 
-.. figure:: /Threads/figures/500px-AmdahlsLaw.png
+.. figure:: figures/500px-AmdahlsLaw.png
    :align: center
    :scale: 80
 

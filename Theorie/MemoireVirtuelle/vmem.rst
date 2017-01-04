@@ -9,7 +9,7 @@ La mémoire virtuelle
 
 Le modèle d'interaction entre le processeur et la mémoire que nous avons utilisé jusqu'à présent est le modèle traditionnel. Dans ce modèle, illustré sur la figure ci-dessous, la mémoire est divisée en octets. Chaque octet est identifié par une adresse encodée sur :math:`n` bits. Une telle mémoire peut donc contenir au maximum :math:`2^n` octets de données. Aujourd'hui, les processeurs utilisent généralement des adresses sur 32 ou 64 bits. Avec des adresses sur 32 bits, la mémoire peut stocker :math:`4.294.967.296` octets de données. Avec des adresses sur 64 bits, la capacité de stockage de la mémoire monte à :math:`18.446.744.073.709.551.616` octets. Si on trouve facilement aujourd'hui des mémoires avec une capacité de :math:`4.294.967.296` octets, il n'en existe pas encore qui sont capables de stocker :math:`18.446.744.073.709.551.616` et il faudra probablement quelques années avant que de telles capacités ne soient utilisables en pratique.
 
-.. figure:: /MemoireVirtuelle/fig/proc-mem.png
+.. figure:: fig/proc-mem.png
    :align: center
    :scale: 60
 
@@ -53,7 +53,7 @@ La mémoire virtuelle
 Le rôle principal du :term:`MMU` est de traduire toute adresse virtuelle en une adresse physique. Avant d'expliquer comment le :term:`MMU` peut être implémenté en pratique, il est utile de passer en revue plusieurs avantages de l'utilisation des adresses virtuelles.
 
 
-.. figure:: /MemoireVirtuelle/fig/mmu.png
+.. figure:: fig/mmu.png
    :align: center
    :scale: 60
 
@@ -69,7 +69,7 @@ Le :term:`MMU` est capable d'effectuer des traductions d'adresses virtuelles qui
 
 Le dernier avantage de l'utilisation de la mémoire virtuelle est qu'il est possible de combiner ensemble la mémoire RAM et un ou des dispositifs de stockage tels que des disques durs ou des disques SSD pour constituer une mémoire virtuelle de plus grande capacité que la mémoire RAM disponible. Pour cela, il suffit, conceptuellement, que le :term:`MMU` soit capable de supporter deux types d'adresses physiques : les adresses physiques en RAM et les adresses physiques qui correspondent à des données stockées sur un dispositif de stockage [#fmmu]_.
 
-.. figure:: /MemoireVirtuelle/fig/vmem.png
+.. figure:: fig/vmem.png
    :align: center
    :scale: 60
 
@@ -99,7 +99,7 @@ La mémoire virtuelle utilise elle une unité intermédiaire qui est la :term:`p
 Lorsqu'un programme est chargé en mémoire, par exemple lors de l'exécution de l'appel système `execve(2)`_, il est automatiquement découpé en pages. Grâce à la mémoire virtuelle, ces pages peuvent être stockée dans n'importe quelle zone de la mémoire RAM. La seule contrainte est que tous les octets qui font partie de la même page soient stockés à des adresses qui sont contigües. Cette contrainte permet de structurer les adresses virtuelles en deux parties comme représenté dans la figure ci-dessous. Une :term:`adresse virtuelle` est donc un ensemble de bits. Les bits de poids fort servent à identifier la :term:`page` dans laquelle une donnée est stockée. Les bits de poids faible (12 lorsque l'on utilise des pages de 4 KBytes), identifient la position de la donnée par rapport au début de la page.
 
 
-.. figure:: /MemoireVirtuelle/fig/addrvirtuelle.png
+.. figure:: fig/addrvirtuelle.png
    :align: center
    :scale: 60
 
@@ -115,7 +115,7 @@ La table des page est stockée en mémoire RAM comme un tableau en C. L'informat
 Grâce à cette table des pages, il est possible de traduire directement les adresses virtuelles en adresses physiques. Cette traduction est représentée dans la figure ci-dessous. Pour réaliser une traduction, il faut tout d'abord extraire de l'adresse virtuelle le numéro de la page. Celui-ci se trouve dans les bits de poids fort de l'adresse virtuelle. Le numéro de la page sert d'index pour récupérer l'entrée correspondant à cette page dans la table des pages. Cette entrée contient l'adresse en mémoire RAM à laquelle la page débute. Pour finaliser la traduction de l'adresse virtuelle, il suffit de concaténer les bits de poids faible de l'adresse virtuelle avec l'adresse de la page en mémoire RAM. Cette concaténation donne l'adresse réelle à laquelle la donnée est stockée en mémoire RAM. Cette adresse physique permet au processeur d'accéder directement à la donnée en mémoire.
 
 
-.. figure:: /MemoireVirtuelle/fig/traduction.png
+.. figure:: fig/traduction.png
    :align: center
    :scale: 60
 
@@ -213,7 +213,7 @@ Une partie des pages qui composent la mémoire virtuelle peut être stockée sur
 
 Pour bien comprendre cette utilisation de la mémoire virtuelle, il nous faut revenir à la table des pages. Celle-ci comprend autant d'entrées qu'il y a de pages dans l'espace d'adressage d'un processus. Nous avons vu qu'une entrée de cette table pouvait être structurée comme dans la figure ci-dessous.
 
-.. figure:: /MemoireVirtuelle/fig/entreeTable.png
+.. figure:: fig/entreeTable.png
    :align: center
    :scale: 60
 
@@ -237,7 +237,7 @@ Outre les partitions de swap, il est également possible de stocker des pages de
 
 A ce stade, il est utile d'analyser à nouveau le fonctionnement de la mémoire virtuelle. En toute généralité, celle-ci est découpée en pages et comprend une mémoire RAM et un ou plusieurs dispositifs de stockage. Pour simplifier la présentation, nous supposons qu'un seul disque dur est utilisé.
 
-.. figure:: /MemoireVirtuelle/fig/memoireVirtuelle.png
+.. figure:: fig/memoireVirtuelle.png
    :align: center
    :scale: 60
 
@@ -279,7 +279,7 @@ Stocker dans le :term:`TLB` l'instant du dernier accès à une page de façon à
 Face à ces difficultés d'implémentation, la plupart des stratégies de remplacement de pages s'appuient sur deux bits qui se trouvent dans chaque entrée de la table des pages [HennessyPatterson]_. Il est relativement facile de supporter ces deux bits dans une implémentation du :term:`TLB` et leur présence n'augmente pas de façon significative la mémoire occupée par une entrée de la table des pages.
 
 
-.. figure:: /MemoireVirtuelle/fig/entreeComplete.png
+.. figure:: fig/entreeComplete.png
    :align: center
    :scale: 60
 
@@ -331,7 +331,7 @@ Fichiers mappés en mémoire
 Lorsqu'un processus Unix veut lire ou écrire des données dans un fichier, il utilise en général les appels systèmes `open(2)`_, `read(2)`_, `write(2)`_ et `close(2)`_ directement ou à travers une librairie de plus haut niveau comme la libraire d'entrées/sorties standard. Ce n'est pas la seule façon pour accéder à des données sur un dispositif de stockage. Grâce à la mémoire virtuelle, il est possible de placer le contenu d'un fichier ou d'une partie de fichier dans une zone de la mémoire du processus. Cette opération peut être effectuée en utilisant l'appel système `mmap(2)`_. Cet appel système permet de rendre des pages d'un fichier accessibles à travers la table des pages du processus comme illustré dans la figure ci-dessous.
 
 
-.. figure:: /MemoireVirtuelle/fig/fichierMappe.png
+.. figure:: fig/fichierMappe.png
    :align: center
    :scale: 60
 
@@ -397,7 +397,7 @@ Dans les exemples précédents, nous avons supposé qu'il existait une correspon
 
 Revenons aux threads POSIX. Lorsqu'un processus crée un nouveau thread d'exécution, celui-ci a un accès complet au segment code, aux variables globales et au heap du processus. Par contre, le thread et le processus ont chacun un stack qui leur est propre. Comme nous l'avons indiqué lors de la présentation des threads, ceux-ci peuvent être implémentés en utilisant une libraire ou avec l'aide du système d'exploitation. Du point de vue de la mémoire, lorsqu'une librairie telle que :term:`gnuth` est utilisée pour créer un thread, la librairie réserve une zone de mémoire sur le heap pour ce thread. Cette zone mémoire contient le stack qui est spécifique au thread. Celui-ci a été alloué en utilisant `malloc(3)`_ et a généralement une taille fixe. Avec la mémoire virtuelle, il est possible d'implémenter les threads plus efficacement avec l'aide du système d'exploitation. Lors de la création d'un thread, celui-ci va tout d'abord créer une nouvelle table des pages pour le thread. Celle-ci sera initialisée en copiant toutes les entrées de la table des pages du processus, sauf celles qui correspondent au stack. De cette façon, le processus `père` et le thread auront accès aux mêmes segments de code, aux même variables globales et au même heap. Toute modification faite par le processus père à une variable globale ou à une information stockée sur le heap sera immédiatement accessible au thread et inversement. L'entrée de la table des pages du thread correspondant à son stack pointera vers une page qui sera spécifique au thread. Cette page aura été initialisée par le système d'exploitation avec l'argument passé par le processus à la fonction `pthread_create(3)`_. La figure ci-dessous illustre ce partage de table des pages après la création d'un thread.
 
-.. figure:: /MemoireVirtuelle/fig/tablePages.png
+.. figure:: fig/tablePages.png
    :align: center
    :scale: 60
 
@@ -505,7 +505,7 @@ En pratique, comme le noyau ne détruit un segment de mémoire partagée que lor
 
 La mémoire partagée est utilisée non seulement pour permettre la communication entre processus, mais également avec les librairies partagées. Celles-ci sont chargées automatiquement lors de l'exécution d'un processus qui les utilise. Les instructions qui font partie de ces librairies partagées sont chargées dans la même zone mémoire que celle qui est utilisée pour la mémoire partagée. Sous Linux, cette zone mémoire est située entre le heap et le stack comme illustré dans la figure ci-dessous.
 
-.. figure:: /MemoireVirtuelle/fig/orgMemoire.png
+.. figure:: fig/orgMemoire.png
    :align: center
    :scale: 60
 

@@ -424,13 +424,13 @@ Le second problème est que les fabricants de processeurs ne se sont pas mis d'a
 
 Pour comprendre ces deux techniques, regardons comment l'entier 16 bits ``0b1111111100000000`` est stocké en mémoire. En :term:`big endian`, le byte ``11111111`` sera stocké à l'adresse `x` et le byte ``00000000`` à l'adresse `x+1`. En :term:`little endian`, c'est le byte ``00000000`` qui est stocké à l'adresse `x` et le byte ``11111111`` qui est stocké à  l'adresse `x+1`. Il en va de même pour les entiers encodés sur 32 bits comme illustré dans les deux figures ci-dessous [#fendianfig]_.
 
-.. figure:: /Fichiers/fig/500px-Big-Endian.png
+.. figure:: fig/500px-Big-Endian.png
    :align: center
    :scale: 40
 
    Ecriture d'un entier 32 bits en mémoire :term:`big endian`
 
-.. figure:: /Fichiers/fig/500px-Little-Endian.png
+.. figure:: fig/500px-Little-Endian.png
    :align: center
    :scale: 40
 

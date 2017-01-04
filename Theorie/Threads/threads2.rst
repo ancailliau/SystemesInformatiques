@@ -10,7 +10,7 @@ Communication entre threads
 Lorsque un programme a été décomposé en plusieurs threads, ceux-ci ne sont en général pas complètement indépendants et ils doivent communiquer entre eux. Cette communication entre threads est un problème complexe comme nous allons le voir. Avant d'aborder ce problème, il est utile de revenir à l'organisation d'un processus et de ses threads en mémoire. La figure ci-dessous illustre schématiquement l'organisation de la mémoire après la création d'un thread POSIX.
 
 
-.. figure:: /Threads/S6-fig/figures-001-c.png
+.. figure:: S6-fig/figures-001-c.png
    :align: center
    :scale: 80
 
@@ -163,7 +163,7 @@ Le deuxième type d'événement est l'exécution d'un appel système bloquant. U
 
 Ces interactions entre les threads et le système d'exploitation sont importantes. Pour bien les comprendre, il est utile de noter qu'un thread peut se trouver dans trois états différents du point de vue de son interaction avec le système d'exploitation. Ces trois états sont illustrés dans la figure ci-dessous.
 
-.. figure:: /Threads/S6-fig/figures-003-c.png
+.. figure:: S6-fig/figures-003-c.png
    :align: center
    :scale: 80
 
@@ -476,7 +476,7 @@ Le problème de l'exclusion mutuelle considère le cas de plusieurs threads qui 
 
 Dans le :term:`problème des philosophes`, un ensemble de philosophes doivent se partager des baguettes pour manger. Tous les philosophes se trouvent dans une même pièce qui contient une table circulaire. Chaque philosophe dispose d'une place qui lui est réservée sur cette table. La table comprend autant de baguettes que de chaises et une baguette est placée entre chaque paire de chaises. Chaque philosophe est modélisé sous la forme d'un thread qui effectue deux types d'actions : `penser` et `manger`. Pour pouvoir manger, un philosophe doit obtenir la baguette qui se trouve à sa gauche et la baguette qui se trouve à sa droite. Lorsqu'il a fini de manger, il peut retourner à son activité philosophale. La figure ci-dessous illustre une table avec les assiettes de trois philosophes et les trois baguettes qui sont à leur disposition.
 
-.. figure:: /Threads/S6-fig/figures-002-c.png
+.. figure:: S6-fig/figures-002-c.png
    :align: center
 
    Problème des philosophes

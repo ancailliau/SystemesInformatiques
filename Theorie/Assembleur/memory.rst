@@ -18,7 +18,7 @@ Un des premiers principes fondateurs est le modèle d'architecture de :term:`von
 La figure ci-dessous illustre les principaux éléments du modèle de von Neumann.
 
 
-.. figure:: /Assembleur/fig/figures-memoire-001-c.png
+.. figure:: fig/figures-memoire-001-c.png
    :align: center
 
    Modèle de von Neumann
@@ -29,7 +29,7 @@ Les technologies utilisées pour construire les processeurs et la mémoire ont f
 En pratique, l'organisation physique d'un ordinateur actuel est plus complexe que le modèle de von Neumann. Schématiquement, on peut considérer l'organisation présentée dans la figure ci-dessous. Le processeur est directement connecté à la mémoire via un :term:`bus` de communication rapide. Ce bus permet des échanges de données et d'instructions efficaces entre la mémoire et le processeur. Outre le processeur et la mémoire, un troisième dispositif, souvent baptisé
 adaptateur de bus est connecté au bus processeur-mémoire. Cet adaptateur permet au processeur d'accéder aux dispositifs de stockage ou aux dispositifs d'entrées-sorties tels que le clavier, la souris ou les cartes réseau. En pratique, cela se réalise en connectant les différents dispositifs à un autre bus de communication (PCI, SCSI, ...) et en utilisant un adaptateur de bus qui est capable de traduire les commandes venant du processeur.
 
-.. figure:: /Assembleur/fig/figures-memoire-002-c.png
+.. figure:: fig/figures-memoire-002-c.png
    :align: center
 
    Architecture d'un ordinateur actuel
@@ -78,7 +78,7 @@ Une première solution pour combiner la :term:`SRAM` et la :term:`DRAM` serait d
 
 La deuxième solution est d'utiliser le principe de la :term:`mémoire cache`. Une :term:`mémoire cache` est une mémoire de faible capacité mais rapide. La mémoire cache peut stocker des données provenant de mémoires de plus grande capacité mais plus lentes. Cette mémoire cache sert d'interface entre le processeur et la mémoire principale. Toutes les demandes d'accès à la mémoire principale passent par la mémoire cache comme illustré dans la figure ci-dessous.
 
-.. figure:: /Assembleur/fig/figures-memoire-005-c.png
+.. figure:: fig/figures-memoire-005-c.png
    :align: center
 
    Le processeur, la mémoire cache et la mémoire principale
@@ -88,7 +88,7 @@ On utilise des mémoires caches dans de nombreux systèmes informatiques de faç
 Les mémoires caches exploitent ces principes de localité en stockant de façon transparente les instructions et les données les plus récemment utilisées. D'un point de vue physique, on peut voir le processeur comme étant connecté à la (ou parfois les) mémoire cache qui est elle-même connectée à la mémoire :term:`RAM`. Les opérations de lecture en mémoire se déroulent généralement comme suit. Chaque fois que le processeur a besoin de lire une donnée se trouvant à une adresse, il fournit l'adresse demandée à la mémoire cache. Si la donnée correspondant à cette adresse est présente en mémoire cache, celle-ci répond directement au processeur. Sinon, la mémoire cache interroge la mémoire :term:`RAM`, se met à jour et ensuite fournit la donnée demandée au processeur. Ce mode de fonctionnement permet à la mémoire cache de se mettre à jour au fur et à mesure des demandes faites par le processeur afin de profiter de la localité temporelle. Pour profiter de la localité spatiale, la plupart des caches se mettent à jour en chargeant directement une :term:`ligne de cache` qui peut compter jusqu'à quelques dizaines d'adresses consécutives en mémoire. Ce chargement d'une ligne complète de cache permet également de profiter des mémoires :term:`DRAM` récentes qui sont souvent optimisées pour fournir des débits de transfert élevés pour de longs blocs consécutifs en mémoire.
 La figure ci-dessous illustre graphiquement la hiérarchie de mémoires dans un ordinateur.
 
-.. figure:: /Assembleur/fig/figures-memoire-003-c.png
+.. figure:: fig/figures-memoire-003-c.png
    :align: center
 
    La hiérarchie de mémoires

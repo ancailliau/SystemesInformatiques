@@ -131,7 +131,7 @@ Organisation de la mémoire
 
 Lors de l'exécution d'un programme en mémoire, le système d'exploitation charge depuis le système de fichier le programme en langage machine et le place à un endroit convenu en mémoire. Lorsqu'un programme s'exécute sur un système Unix, la mémoire peut être vue comme étant divisée en six zones principales. Ces zones sont représentées schématiquement dans la figure ci-dessous.
 
-.. figure:: /C/figures/figures-001-c.png
+.. figure:: figures/figures-001-c.png
    :align: center
 
    Organisation d'un programme Linux en mémoire

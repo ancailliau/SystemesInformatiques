@@ -160,7 +160,7 @@ La compilation d'un tel programme se déroule en plusieurs étapes. La première
 
 La figure ci-dessous représente graphiquement les différentes étapes de compilation des modules ``min.c`` et ``main.c``.
 
-.. figure:: /C/figures/figures-007-c.png
+.. figure:: figures/figures-007-c.png
    :align: center
    :scale: 60
 
